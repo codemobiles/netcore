@@ -6,7 +6,7 @@
         <div class="login-box-body" style="background: whitesmoke; border-radius: 10px;">
           <p class="login-box-msg">Sign in to start your session</p>
       
-          <form #form="ngForm" (submit)="onSubmit(form.value)">
+          <form #loginForm="ngForm" (submit)="onSubmit(loginForm.value)">
             <div class="form-group has-feedback">
               <input name="username" ngModel type="email" class="form-control" placeholder="Email">
               <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
