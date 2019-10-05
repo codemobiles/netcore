@@ -21,6 +21,11 @@ export class AppComponent implements OnInit{
     }, 1000)
 
   }
+
+  onChangedOne(value){
+    alert(value);
+  }
+
   onClickRun1(){
     alert("555");
   }

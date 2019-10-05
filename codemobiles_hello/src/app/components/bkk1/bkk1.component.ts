@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-bkk1',
@@ -8,10 +8,14 @@ import { Component, OnInit, Input } from '@angular/core';
 export class Bkk1Component implements OnInit {
 
   @Input()  count:number
+  @Output() change1 = new EventEmitter<string>();
 
   constructor() { }
 
   ngOnInit() {
+    setTimeout(()=>{
+      this.change1.emit("I love dog");
+    }, 5000)
   }
 
 }

@@ -7,6 +7,6 @@
     <button (click)="onClickRun1()">Run1</button>
   </div>
 
-  <app-bkk1 [count]="5"></app-bkk1>
-  <app-bkk2></app-bkk2>
+  <app-bkk1 [count]="5"  (change1)="onChangedOne($event)"></app-bkk1>
+  <app-bkk2 [counter]="10"></app-bkk2>
 </div>
