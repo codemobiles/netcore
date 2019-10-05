@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-bkk1',
@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./bkk1.component.css']
 })
 export class Bkk1Component implements OnInit {
+
+  @Input()  count:number
 
   constructor() { }
 

@@ -5,22 +5,24 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
-  
+export class AppComponent implements OnInit{
+ 
   title = 'hello';
   header = "Angular Communication Demo";
   version = 1
   isGirl = false;
   time:any;
 
-  onClickRun1(){
-    alert("555");
-  }
 
   ngOnInit(): void {
-   setInterval(()=>{
-    this.time = Date.now();
-   }, 1000)
+
+    setInterval(()=>{
+      this.time = Date.now();
+    }, 1000)
+
+  }
+  onClickRun1(){
+    alert("555");
   }
 
   isUpgrade(){

@@ -1,12 +1,12 @@
 <div>
   <h1>{{header}}</h1>
-  <p>{{time}}</p>
+  <p>{{time | date : "full"}}</p>
 
   <!-- BUTTONS -->
   <div>
     <button (click)="onClickRun1()">Run1</button>
   </div>
 
-  <app-bkk1></app-bkk1>
+  <app-bkk1 [count]="5"></app-bkk1>
   <app-bkk2></app-bkk2>
 </div>
