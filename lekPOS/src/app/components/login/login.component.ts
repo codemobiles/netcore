@@ -12,4 +12,8 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
+  onSubmit(value){
+    alert(JSON.stringify(value)); 
+  }
+
 }
