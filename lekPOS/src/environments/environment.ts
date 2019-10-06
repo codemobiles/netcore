@@ -1,6 +1,6 @@
 export const environment = {
   production: false,
-  baseAPIURL: 'https://jsonplaceholder.typicode.com',
+  baseAPIURL: 'https://localhost:5001',
   keyLocalAuthenInfo: 'keyLocalAuthenInfo'
 };
 
