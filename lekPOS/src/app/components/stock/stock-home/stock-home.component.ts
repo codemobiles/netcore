@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NetworkServiceService } from 'src/app/services/network-service.service';
 import { TestJSON } from 'src/app/models/test.model';
 import Swal from 'sweetalert2'
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-stock-home',
   templateUrl: './stock-home.component.html',
@@ -11,7 +12,7 @@ export class StockHomeComponent implements OnInit {
 
   mDataArray: TestJSON[];
 
-  constructor(private networkService: NetworkServiceService) { }
+  constructor(private networkService: NetworkServiceService, private router: Router ) { }
 
   ngOnInit() {
     this.feedData()
@@ -41,6 +42,10 @@ export class StockHomeComponent implements OnInit {
     }).then(async result => {
         // todo
     });
+  }
+
+  editProduct(id: number){
+      this.router.navigate([`stock/edit/${id}`]);
   }
 
 }
