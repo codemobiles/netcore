@@ -13,7 +13,7 @@
       </ol>
     </section>
 
-    <section class="content">
+    <section class="content" *ngIf="mDataArray != null">
       <div class="row">
         <div class="col-md-4 col-sm-6 col-xs-12">
           <div class="info-box">
@@ -22,7 +22,7 @@
             </span>
             <div class="info-box-content">
               <p class="p_custom">Products</p>
-              <h2>XXXX</h2>
+              <h2>{{mDataArray.length}}</h2>
             </div>
           </div>
         </div>
@@ -46,7 +46,7 @@
             </span>
             <div class="info-box-content">
               <p class="p_custom">SoldOut</p>
-              <h2>XXXXX</h2>
+              <h2>{{getOutOfStock()}}</h2>
             </div>
           </div>
         </div>
