@@ -7,10 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'cmPOS';
-
- 
+  
  public get isLogged() : boolean {
-   return false;
+   return true;
  }
- 
+
 }

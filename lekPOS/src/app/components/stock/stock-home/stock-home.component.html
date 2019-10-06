@@ -1,0 +1,97 @@
+
+  <div class="content-wrapper">
+    <section class="content-header">
+      <h1>Stock<small>Lists</small></h1>
+      <ol class="breadcrumb">
+        <li>
+          <a href="">
+            <i class="fa fa-dashboard"></i> Home</a>
+        </li>
+        <li>
+          <a href="">Stock</a>
+        </li>
+      </ol>
+    </section>
+
+    <section class="content">
+      <div class="row">
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon">
+              <img src="assets/images/ic_product.png" class="logo">
+            </span>
+            <div class="info-box-content">
+              <p class="p_custom">Products</p>
+              <h2>XXXX</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon">
+              <img src="assets/images/ic_new.png" class="logo">
+            </span>
+            <div class="info-box-content">
+              <p class="p_custom">Defect</p>
+              <h2>0</h2>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon">
+              <img src="assets/images/ic_out_of_stock.png" class="logo">
+            </span>
+            <div class="info-box-content">
+              <p class="p_custom">SoldOut</p>
+              <h2>XXXXX</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="box">
+        <div class="box-body">
+          <div class="row" style="margin-bottom: 40px;">
+            <div class="col-xs-6">
+              <input type="search" class="form-control input-lg"
+               placeholder="Enter search keyword" style="border-radius:10px;">
+            </div>
+            <div class="col-xs-6 text-right">
+              <a style="float:right; margin:0; width: 100px;"
+                class="btn btn-success btn-lg">เพิ่ม</a>
+            </div>
+          </div>
+
+          <table class="table table-bordered table-striped table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>PRICE</th>
+                <th>STOCK</th>
+                <th>ACTION</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr *ngFor="let item of mDataArray">
+                <td>{{item.name}}</td>
+                <td>
+                  <strong class="product_name">XXXX</strong>
+                </td>
+                <td>฿XXXXXX</td>
+                <td>XXXXX PCS.</td>
+                <td>
+                  <img src="assets/images/ic_edit.png" class="edit_product">
+                  <img src="assets/images/ic_delete.png" class="delete_product">
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>

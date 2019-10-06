@@ -15,7 +15,8 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(value){
-    alert(JSON.stringify(value)); 
+    alert(JSON.stringify(value));
+    this.router.navigate(["stock"]);
   }
 
   onClickRegister(){

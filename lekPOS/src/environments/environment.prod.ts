@@ -1,3 +1,9 @@
 export const environment = {
-  production: true
+  production: true,
+  baseAPIURL: 'https://jsonplaceholder.typicode.com',
+  keyLocalAuthenInfo: 'keyLocalAuthenInfo'
 };
+
+
+
+
