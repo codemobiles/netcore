@@ -6,8 +6,6 @@ Dotnet core commands
 NuGet Package Manager
 
 
-
-
 Vscode-icon
 Auto close tag
 Auto rename tag
@@ -22,4 +20,11 @@ Terminal
 Terminal tabs
 Trailing Spaces
 Bootstrap 4, Font awesome 4, ….
+
+
+@Codemobiles
+
+iguitaronline
+
+
 
