@@ -6,7 +6,6 @@ using Microsoft.Extensions.Logging;
 
 namespace cmPOSAPI.Controllers
 {
-
     [ApiController]
     [Route("/api/v2/[controller]")] // .../api/v2/product
     public class ProductController : ControllerBase

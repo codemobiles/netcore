@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/iblurblur/Desktop/cmPOSAPI/cmPOSAPI.csproj": {}
+    "/Users/iblurblur/Desktop/netcore/cmPOSAPI/cmPOSAPI.csproj": {}
   },
   "projects": {
-    "/Users/iblurblur/Desktop/cmPOSAPI/cmPOSAPI.csproj": {
+    "/Users/iblurblur/Desktop/netcore/cmPOSAPI/cmPOSAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/iblurblur/Desktop/cmPOSAPI/cmPOSAPI.csproj",
+        "projectUniqueName": "/Users/iblurblur/Desktop/netcore/cmPOSAPI/cmPOSAPI.csproj",
         "projectName": "cmPOSAPI",
-        "projectPath": "/Users/iblurblur/Desktop/cmPOSAPI/cmPOSAPI.csproj",
+        "projectPath": "/Users/iblurblur/Desktop/netcore/cmPOSAPI/cmPOSAPI.csproj",
         "packagesPath": "/Users/iblurblur/.nuget/packages/",
-        "outputPath": "/Users/iblurblur/Desktop/cmPOSAPI/obj/",
+        "outputPath": "/Users/iblurblur/Desktop/netcore/cmPOSAPI/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/iblurblur/.nuget/NuGet/NuGet.Config"

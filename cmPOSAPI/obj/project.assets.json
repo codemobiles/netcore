@@ -1723,7 +1723,7 @@
       ]
     },
     "runtime.native.System.Data.SqlClient.sni/4.4.0": {
-      "sha512": "Xu7AUFtXuxEspQPI5nKCDEiEcbRmE5FTIO0qE1r0qA9v1OoawQZnbWmsnrdYaO8vlSixXMedPv1U6916STjPnQ==",
+      "sha512": "A8v6PGmk+UGbfWo5Ixup0lPM4swuSwOiayJExZwKIOjTlFFQIsu3QnDXECosBEyrWSPryxBVrdqtJyhK3BaupQ==",
       "type": "package",
       "path": "runtime.native.system.data.sqlclient.sni/4.4.0",
       "files": [
@@ -4881,11 +4881,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/iblurblur/Desktop/cmPOSAPI/cmPOSAPI.csproj",
+      "projectUniqueName": "/Users/iblurblur/Desktop/netcore/cmPOSAPI/cmPOSAPI.csproj",
       "projectName": "cmPOSAPI",
-      "projectPath": "/Users/iblurblur/Desktop/cmPOSAPI/cmPOSAPI.csproj",
+      "projectPath": "/Users/iblurblur/Desktop/netcore/cmPOSAPI/cmPOSAPI.csproj",
       "packagesPath": "/Users/iblurblur/.nuget/packages/",
-      "outputPath": "/Users/iblurblur/Desktop/cmPOSAPI/obj/",
+      "outputPath": "/Users/iblurblur/Desktop/netcore/cmPOSAPI/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/Users/iblurblur/.nuget/NuGet/NuGet.Config"
