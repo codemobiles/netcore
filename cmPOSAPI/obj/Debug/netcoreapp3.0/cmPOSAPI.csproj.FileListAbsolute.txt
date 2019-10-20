@@ -72,3 +72,12 @@
 /Users/iblurblur/Desktop/netcore/cmPOSAPI/obj/Debug/netcoreapp3.0/cmPOSAPI.csproj.CopyComplete
 /Users/iblurblur/Desktop/netcore/cmPOSAPI/obj/Debug/netcoreapp3.0/cmPOSAPI.dll
 /Users/iblurblur/Desktop/netcore/cmPOSAPI/obj/Debug/netcoreapp3.0/cmPOSAPI.pdb
+/Users/iblurblur/Desktop/netcore/cmPOSAPI/bin/Debug/netcoreapp3.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/Users/iblurblur/Desktop/netcore/cmPOSAPI/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/Users/iblurblur/Desktop/netcore/cmPOSAPI/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.Logging.dll
+/Users/iblurblur/Desktop/netcore/cmPOSAPI/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.Protocols.dll
+/Users/iblurblur/Desktop/netcore/cmPOSAPI/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/Users/iblurblur/Desktop/netcore/cmPOSAPI/bin/Debug/netcoreapp3.0/Microsoft.IdentityModel.Tokens.dll
+/Users/iblurblur/Desktop/netcore/cmPOSAPI/bin/Debug/netcoreapp3.0/Newtonsoft.Json.dll
+/Users/iblurblur/Desktop/netcore/cmPOSAPI/bin/Debug/netcoreapp3.0/System.IdentityModel.Tokens.Jwt.dll
+/Users/iblurblur/Desktop/netcore/cmPOSAPI/bin/Debug/netcoreapp3.0/CryptoHelper.dll
