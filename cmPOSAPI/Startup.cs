@@ -32,8 +32,7 @@ namespace cmPOSAPI
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-
-           // DI
+            // C# extensions
            services.AddDbContext<DatabaseContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("ConnectionSQLServer")));
 
@@ -55,6 +54,38 @@ namespace cmPOSAPI
                 }; 
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowSpecificOrigins",
+                 builder =>
+                 {
+                     builder.WithOrigins(
+                         "http://example.com",
+                         "http://localhost:1512959")
+                         .AllowAnyHeader()
+                         .AllowAnyMethod();
+                     //.WithMethods("GET", "POST", "HEAD");
+                 });
+
+                options.AddPolicy("AllowAll",
+                 builder =>
+                 {
+                     builder.AllowAnyOrigin()
+                     .AllowAnyHeader()
+                     .AllowAnyMethod();
+                 });
+
+                /*
+                    The browser can skip the preflight request
+                    if the following conditions are true:
+                    - The request method is GET, HEAD, or POST.
+                    - The Content-Type header
+                       - application/x-www-form-urlencoded
+                       - multipart/form-data
+                       - text/plain
+                */
+            });
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -68,6 +99,8 @@ namespace cmPOSAPI
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("AllowAll");
 
             app.UseAuthentication();
 

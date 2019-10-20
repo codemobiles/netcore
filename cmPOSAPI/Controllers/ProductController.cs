@@ -36,11 +36,11 @@ namespace cmPOSAPI.Controllers
             try
             {
                 var result = Context.Products.ToList();
-                return Ok(result);
+                return Ok(new { result = result, message = "request successfully" });
             }
             catch (Exception error)
             {
-                _logger.LogError("Failed to execute GET");
+                _logger.LogError($"Log GetProducts: {error}");
                 return StatusCode(500, new { result = "", message = error });
             }
         }
@@ -57,11 +57,11 @@ namespace cmPOSAPI.Controllers
                 {
                     return NotFound();
                 }
-                return Ok(product);
+                return Ok(new { result = product, message = "request successfully" });
             }
             catch (Exception error)
             {
-                _logger.LogError("Failed to execute GET");
+                _logger.LogError($"Log GetProduct: {error}");
                 return StatusCode(500, new { result = "", message = error });
             }
         }
@@ -77,11 +77,11 @@ namespace cmPOSAPI.Controllers
                 Context.Products.Add(data);
                 Context.SaveChanges();
 
-                return Ok();
+                return Ok(new { result = data, message = "create product successfully" });
             }
             catch (Exception error)
             {
-                _logger.LogError("Failed to execute GET");
+                _logger.LogError($"Log CreateProduct: {error}");
                 return StatusCode(500, new { result = "", message = error });
             }
         }
@@ -113,11 +113,11 @@ namespace cmPOSAPI.Controllers
                 Context.Products.Update(product);
                 Context.SaveChanges();
 
-                return Ok();
+                return Ok(new { result = "", message = "update product successfully" });
             }
             catch (Exception error)
             {
-                _logger.LogError("Failed to execute GET");
+                _logger.LogError($"Log UpdateProduct: {error}");
                 return StatusCode(500, new { result = "", message = error });
             }
         }
@@ -127,7 +127,7 @@ namespace cmPOSAPI.Controllers
         public IActionResult DeleteProduct(int id)
         {
             try
-            {    
+            {
                 var product = Context.Products.SingleOrDefault(p => p.ProductId == id);
 
                 if (product == null)
@@ -138,11 +138,11 @@ namespace cmPOSAPI.Controllers
                 Context.Products.Remove(product);
                 Context.SaveChanges();
 
-                return Ok();
+                return Ok(new { result = "", message = "delete product sucessfully" });
             }
             catch (Exception error)
             {
-                _logger.LogError("Failed to execute GET");
+                _logger.LogError($"Log DeleteProduct: {error}");
                 return StatusCode(500, new { result = "", message = error });
             }
         }
@@ -152,7 +152,7 @@ namespace cmPOSAPI.Controllers
         {
             return File($"~/images/{name}", "image/jpg");
         }
-                
+
 
         public async Task<String> UploadProductImages()
         {

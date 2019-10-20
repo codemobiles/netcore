@@ -13,7 +13,6 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace cmposapi.Controllers
 {
-
     [ApiController]
     [Route("/api/v2/[controller]")]
     public class AuthController : ControllerBase
@@ -23,8 +22,8 @@ namespace cmposapi.Controllers
         public DatabaseContext Context { get; }
         public IConfiguration Configuration { get; }
 
-        public AuthController(DatabaseContext context, 
-        ILogger<AuthController> logger, 
+        public AuthController(DatabaseContext context,
+        ILogger<AuthController> logger,
         IConfiguration Configuration)
         {
             Context = context;
@@ -42,12 +41,12 @@ namespace cmposapi.Controllers
                 Context.Users.Add(model);
                 Context.SaveChanges();
 
-                return Ok();
+                return Ok(new { result = "ok", message = "register successfully" });
             }
-            catch (Exception)
+            catch (Exception error)
             {
-                _logger.LogError("Failed to execute POST");
-                return BadRequest();
+                _logger.LogError($"Log Register: {error}");
+                return StatusCode(500, new { result = "failure", message = error });
             }
         }
 
@@ -58,7 +57,8 @@ namespace cmposapi.Controllers
             try
             {
                 var result = Context.Users.SingleOrDefault(u => u.Username == model.Username);
-                if(result == null){
+                if (result == null)
+                {
                     return Unauthorized();
                 }
 
@@ -68,14 +68,12 @@ namespace cmposapi.Controllers
                 }
 
                 var token = BuildToken(result);
-                return Ok(new {Token = token});
+                return Ok(new { token = token, message = "login successfully" });
             }
-            catch (Exception ex)
+            catch (Exception error)
             {
-                var xxxx = ex.Message.ToString();
-                
-                _logger.LogError("Failed to execute POST");
-                return BadRequest();
+                _logger.LogError($"Log Login: {error}");
+                return StatusCode(500, new { result = "failure", message = error });
             }
         }
 
@@ -89,7 +87,7 @@ namespace cmposapi.Controllers
                 new Claim("position", user.Position),
                 new Claim(ClaimTypes.Role, user.Position)
             };
-            
+
             var expires = DateTime.Now.AddDays(Convert.ToDouble(Configuration["Jwt:ExpireDay"]));
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]));
@@ -105,7 +103,7 @@ namespace cmposapi.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-   
+
 
 
     }

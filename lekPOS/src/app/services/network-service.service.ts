@@ -28,6 +28,14 @@ export class NetworkServiceService {
     return this.httpClient.get<TestJSON[]>(`users`);
   }
 
+  login(data): Observable<any>{
+    return this.httpClient.post<any>(this.loginURL, data);
+  }
+
+  register(data): Observable<any>{
+    return this.httpClient.post<any>(this.registerURL, data);
+  }
+
   getProductAll(): Observable<ResponseProducts>{
     return this.httpClient.get<ResponseProducts>(this.productURL);
   }
