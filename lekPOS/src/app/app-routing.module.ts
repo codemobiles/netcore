@@ -5,6 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './components/authen/login/login.component';
 import { StockCreateComponent } from './components/stock/stock-create/stock-create.component';
 import { StockEditComponent } from './components/stock/stock-edit/stock-edit.component';
+import { ShopHomeComponent } from './components/shop/shop-home/shop-home.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'stock', component: StockHomeComponent },
   { path: 'stock/create', component: StockCreateComponent },
   { path: 'stock/edit/:id', component: StockEditComponent },
+  { path: 'shop', component: ShopHomeComponent },
   { path: '**', redirectTo: 'login' },
 ];
 

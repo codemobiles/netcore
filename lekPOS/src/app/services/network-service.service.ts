@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { TestJSON } from '../models/test.model';
-import { ResponseProducts, ResponseProduct } from '../models/product.model';
+import { ResponseProducts, ResponseProduct, Product } from '../models/product.model';
 import { ResponseLogin, ResponseRegister } from '../models/auth.model';
 
 
@@ -19,7 +19,7 @@ export class NetworkServiceService {
   private loginURL = `${this.apiURL}/auth/login`;
   private registerURL = `${this.apiURL}/auth/register`;
   private productURL = `${this.apiURL}/product`;
-  private productImageURL = `${this.apiURL}/product/images`;
+  public productImageURL = `${this.apiURL}/product/images`;
   private outOfStockURL = `${this.productURL}/count/out_of_stock`;
   private transactionURL = `${this.apiURL}/transaction`;
 
@@ -49,4 +49,27 @@ export class NetworkServiceService {
   deleteProduct(id: Number): Observable<ResponseProduct>{
     return this.httpClient.delete<ResponseProduct>(`${this.productURL}/${id}`);
   }
+
+  addProduct(data): Observable<ResponseProduct>{
+    return this.httpClient.post<ResponseProduct>(this.productURL, this.makeFormData(data));
+  }
+
+  makeFormData(product: Product): FormData {
+    const formData = new FormData();
+    formData.append('name', product.name);
+    formData.append('price', product.price.toString());
+    formData.append('stock', product.stock.toString());
+    formData.append('upload_file', product.image);
+    return formData;
+  }
+
+  getProduct(id: Number): Observable<ResponseProduct>{
+    return this.httpClient.get<ResponseProduct>(`${this.productURL}/${id}`);
+  }
+
+  editProduct(data, id: Number): Observable<ResponseProduct>{
+    return this.httpClient.put<ResponseProduct>(
+      `${this.productURL}/${id}`, this.makeFormData(data));
+  }
+
 }

@@ -1,1 +1,73 @@
-<p>stock-create works!</p>
+<div class="content-wrapper">
+    <section class="content">
+      <div class="box box-primary">
+        <div class="box-header">
+          <div class="icon_create_section">
+            <img src="assets/images/ic_detail_title.png">
+            <strong>Create</strong>
+          </div>
+        </div>
+        <div class="box-body">
+          <form class="form-horizontal">
+            <input type="hidden" name="image">
+
+            <div class="form-group input_product_name">
+              <label class="col-sm-2 control-label">Name</label>
+              <div class="col-sm-10">
+                <input [(ngModel)]="mProduct.name" class="form-control" type="text" name="Name">
+              </div>
+            </div>
+
+            <div class="form-group input_product_quantity">
+              <label class="col-sm-2 control-label">Quantity</label>
+              <div class="col-sm-10">
+                <div class="input-group">
+                  <input [(ngModel)]="mProduct.stock" class="form-control" type="number" name="stock">
+                  <span class="input-group-addon input-group-addon_custom">PCS.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Price</label>
+              <div class="col-sm-10">
+                <div class="input-group">
+                  <input [(ngModel)]="mProduct.price" class="form-control" type="number" name="price">
+                  <span class="input-group-addon input-group-addon_custom">฿</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Image</label>
+              <div class="col-sm-10">
+                <div class="input-group">
+                  <img *ngIf="imageSrc != null" src="{{imageSrc}}" class="product_image">
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group upload_image">
+              <div class="col-sm-12 col-sm-offset-2">
+                <div>
+                  <ul class="btn-nav row" id="rcorners">
+                    <li>
+                      <span class="btn-upload">
+                        <img src="assets/images/ic_photo.png">
+                        <span>Change</span>
+                        <input (change)="onUploadImage($event)" class="picupload" accept="image/*" type="file">
+                      </span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="box-footer">
+              <input class="btn btn-primary pull-right" (click)="onSubmit()" value="Submit">
+              <input class="btn btn-secondary pull-right" (click)="onCancel()"  value="Cancel">
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </div>

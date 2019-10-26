@@ -103,7 +103,7 @@ namespace cmPOSAPI.Controllers
                 String image = await UploadProductImages();
                 if (!String.IsNullOrEmpty(image))
                 {
-                    data.Image = image;
+                    product.Image = image;
                 }
 
                 product.Name = data.Name;
@@ -147,6 +147,7 @@ namespace cmPOSAPI.Controllers
             }
         }
 
+        [AllowAnonymous]
         [HttpGet("images/{name}")]
         public IActionResult ProductImage(string name)
         {

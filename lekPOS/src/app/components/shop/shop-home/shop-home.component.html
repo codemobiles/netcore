@@ -1,0 +1,110 @@
+<div class="content-wrapper">
+    <section class="content">
+      <div class="row">
+        <div class="col-md-4">
+          <div style="max-width:100%;">
+
+            <ng-container *ngIf="mOrderArray.length === 0;then no_order else order">here is ignored</ng-container>
+
+            <ng-template #no_order>
+              <ul class="card card_no_order">Waiting for Order</ul>
+            </ng-template>
+
+            <ng-template #order>
+              <ul class="card card_orders">
+                <li>
+                  <table class="card_orders_item">
+                    <tr>
+                      <td class="td_orderline">
+                        <div class="image_product_list_item">
+                          <img *ngIf="item.image === ''" src="assets/images/no_photo.jpg">
+
+                        </div>
+                        <div class="title_product_list_item">XXXXX</div>
+                        <div class="price_product_list_item">
+                          ฿XXXX
+                        </div>
+
+                        <span style="cursor:pointer; float:right;" (click)="onClickRemoveOrder()">
+                          <img src="assets/images/delete.png" class="nbutton_delete">
+                        </span>
+                      </td>
+                    </tr>
+                  </table>
+                </li>
+              </ul>
+            </ng-template>
+
+            <div class="card">
+              <div style="padding-top:16px;">
+                <div class="row" style="padding-left: 12px;padding-right: 12px;">
+                  <div class="col-md-6 pull-left" style="color: #777777;">
+                    <b style="font-size: 20px; font-weight: 100;">Tax 7%</b>
+                  </div>
+                  <div class="col-md-6" style="text-align:right; margin-bottom: 16px;">
+                    <span>
+                      <b style="font-size: 18px;font-weight: 100;">฿0.00</b>
+                    </span>
+                  </div>
+                </div>
+                <div class="row" style="padding-left: 12px;padding-right: 12px;">
+                  <div class="col-md-2 pull-left" style="color: #777777;">
+                    <b style="font-size: 20px;">Total</b>
+                  </div>
+                  <div class="col-md-10" style="text-align:right; margin-bottom: 16px;">
+                    <span>
+                      <b style="font-size: 27px; color: red;">฿XXXXX</b>
+                    </span>
+                  </div>
+                </div>
+
+                <div *ngIf="mIsPaymentShow === false;then payment_btn else cancel_btn">here is ignored</div>
+                <ng-template #payment_btn>
+                  <button (click)="onClickPayment()"
+                    [ngClass]="mOrderArray.length == 0 ? 'payment_blank' : 'payment_ready'"
+                    class="payment_btn  btn btn-default">
+                    <strong>Payment</strong>
+                  </button>
+                </ng-template>
+                <ng-template #cancel_btn>
+                  <button (click)="onClickPayment()" class="payment_btn payment_cancel btn btn-default">
+                    <strong>Cancel</strong>
+                  </button>
+                </ng-template>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <ng-container *ngIf="mIsPaymentShow === false;then productList else payment">here is ignored</ng-container>
+
+        <ng-template #productList>
+          <div class="col-md-8" style="max-height: 710px;overflow-y: scroll;">
+            <div class="row">
+              <div (click)="onClickAddOrder()"
+                class="col-sm-4 col-md-3 newpadding_item">
+                <div class="card">
+                  <div class="thumbnail">
+                    <img *ngIf="item.image === ''" src="assets/images/no_photo.jpg" class="portrait">
+                  </div>
+                  <span>
+                    ID XXX / ฿XXX / XXXX pcs.
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ng-template>
+
+        <ng-template #payment>
+          <div class="col-md-8" style="max-height: 710px;overflow-y: scroll; height:900px;">
+            <div class="row" style="background-color: white; height: 100%; margin-right: 8px; margin-top: 13px;">
+              <app-shop-payment class="col-md-8 col-md-offset-2" style="margin-top: 50px;"></app-shop-payment>
+            </div>
+          </div>
+        </ng-template>
+
+      </div>
+    </section>
+  </div>
