@@ -57,6 +57,7 @@
           <div class="row" style="margin-bottom: 40px;">
             <div class="col-xs-6">
               <input type="search" class="form-control input-lg"
+                (keyup)="searchTextChanged.next($event.target.value)"
                placeholder="Enter search keyword" style="border-radius:10px;">
             </div>
             <div class="col-xs-6 text-right">
@@ -79,15 +80,15 @@
 
             <tbody>
               <tr *ngFor="let item of mDataArray">
-                <td>{{item.name}}</td>
+                <td>{{item.productId}}</td>
                 <td>
-                  <strong class="product_name">XXXX</strong>
+                  <strong class="product_name">{{item.name}}</strong>
                 </td>
-                <td>฿XXXXXX</td>
-                <td>XXXXX PCS.</td>
+                <td>฿{{item.price}}</td>
+                <td>{{item.stock}} PCS.</td>
                 <td>
-                  <img (click)="editProduct(111)" src="assets/images/ic_edit.png" class="edit_product">
-                  <img (click)="deleteProduct(1111)" src="assets/images/ic_delete.png" class="delete_product">
+                  <img (click)="editProduct(item.productId)" src="assets/images/ic_edit.png" class="edit_product">
+                  <img (click)="deleteProduct(item.productId)" src="assets/images/ic_delete.png" class="delete_product">
                 </td>
               </tr>
             </tbody>

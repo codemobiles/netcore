@@ -4,6 +4,9 @@ import { TestJSON } from 'src/app/models/test.model';
 import Swal from 'sweetalert2'
 import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
+import { Subject } from 'rxjs';
+import { debounceTime } from 'rxjs/operators';
+
 @Component({
   selector: 'app-stock-home',
   templateUrl: './stock-home.component.html',
@@ -12,23 +15,50 @@ import { Product } from 'src/app/models/product.model';
 export class StockHomeComponent implements OnInit {
 
   mDataArray: Product[];
+  mSearchArray: Product[];
+
+  searchTextChanged = new Subject<string>();
 
   constructor(private networkService: NetworkServiceService, private router: Router ) { }
 
   ngOnInit() {
     this.feedData()
+
+    this.searchTextChanged.pipe(
+      debounceTime(2000)
+    ).subscribe(
+      term => this.searchProduct(term)
+    )
+  }
+
+  searchProduct(term: String){
+    console.log(term)
+    if(term === ''){
+      this.feedData()
+    }else{
+      this.mDataArray = this.mSearchArray.filter(
+        (product) => {
+          return product.name.toLowerCase().indexOf(term.toLowerCase()) > -1
+        }
+      );
+    }
   }
 
   feedData() {
     this.networkService.getProductAll().subscribe(
       data => {
         this.mDataArray = data.result;
+        this.mSearchArray = data.result;
       }
     )
   }
 
   getOutOfStock(): number {
-    return 10;
+    return this.mDataArray.filter(
+      (product) => {
+        return product.stock == 0
+      }
+    ).length;
   }
 
   deleteProduct(id: number){
@@ -41,7 +71,14 @@ export class StockHomeComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
     }).then(async result => {
-        // todo
+        this.networkService.deleteProduct(id).subscribe(
+          result => {
+              this.feedData()
+          },
+          error => {
+            //todo
+          }
+        );
     });
   }
 

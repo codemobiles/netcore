@@ -19,10 +19,10 @@ namespace cmPOSAPI.Controllers
         ILogger<ProductController> _logger;
         DatabaseContext Context;
 
-        public IHostingEnvironment Env { get; }
+        public IWebHostEnvironment Env { get; }
 
         public ProductController(
-            IHostingEnvironment Env,
+            IWebHostEnvironment Env,
             ILogger<ProductController> logger, DatabaseContext context)
         {
             this.Env = Env;

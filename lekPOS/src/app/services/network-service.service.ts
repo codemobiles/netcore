@@ -3,7 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Observable } from 'rxjs';
 import { TestJSON } from '../models/test.model';
-import { ResponseProducts } from '../models/product.model';
+import { ResponseProducts, ResponseProduct } from '../models/product.model';
+import { ResponseLogin, ResponseRegister } from '../models/auth.model';
 
 
 @Injectable({
@@ -28,15 +29,24 @@ export class NetworkServiceService {
     return this.httpClient.get<TestJSON[]>(`users`);
   }
 
-  login(data): Observable<any>{
-    return this.httpClient.post<any>(this.loginURL, data);
+  login(data): Observable<ResponseLogin>{
+    return this.httpClient.post<ResponseLogin>(this.loginURL, data);
   }
 
-  register(data): Observable<any>{
-    return this.httpClient.post<any>(this.registerURL, data);
+  isLogin(): Boolean{
+    var token = localStorage.getItem(environment.keyLocalAuthenInfo)
+    return token != null
+  }
+
+  register(data): Observable<ResponseRegister>{
+    return this.httpClient.post<ResponseRegister>(this.registerURL, data);
   }
 
   getProductAll(): Observable<ResponseProducts>{
     return this.httpClient.get<ResponseProducts>(this.productURL);
+  }
+
+  deleteProduct(id: Number): Observable<ResponseProduct>{
+    return this.httpClient.delete<ResponseProduct>(`${this.productURL}/${id}`);
   }
 }

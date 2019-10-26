@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,6 +13,7 @@ import { RegisterComponent } from './components/authen/register/register.compone
 import { StockHomeComponent } from './components/stock/stock-home/stock-home.component';
 import { StockCreateComponent } from './components/stock/stock-create/stock-create.component';
 import { StockEditComponent } from './components/stock/stock-edit/stock-edit.component';
+import { JwtInterceptor } from './services/jwt.interceptor';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,9 @@ import { StockEditComponent } from './components/stock/stock-edit/stock-edit.com
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
