@@ -12,20 +12,22 @@
 
             <ng-template #order>
               <ul class="card card_orders">
-                <li>
+                <li *ngFor="let item of mOrderArray; let i=index"
+                   [ngClass]="i % 2 === 0 ? 'selected_row' : 'normal_row'">
+
                   <table class="card_orders_item">
                     <tr>
                       <td class="td_orderline">
                         <div class="image_product_list_item">
-                          <img *ngIf="item.image === ''" src="assets/images/no_photo.jpg">
-
+                          <img *ngIf="item.image === null || item.image === ''" src="assets/images/no_photo.jpg">
+                          <img *ngIf="item.image !== null || item.image !== ''" src="{{item.image}}" >
                         </div>
-                        <div class="title_product_list_item">XXXXX</div>
+                        <div class="title_product_list_item">{{item.name}}</div>
                         <div class="price_product_list_item">
-                          ฿XXXX
+                          ฿ {{item.price}}
                         </div>
 
-                        <span style="cursor:pointer; float:right;" (click)="onClickRemoveOrder()">
+                        <span style="cursor:pointer; float:right;" (click)="onClickRemoveOrder(item)">
                           <img src="assets/images/delete.png" class="nbutton_delete">
                         </span>
                       </td>
@@ -53,7 +55,7 @@
                   </div>
                   <div class="col-md-10" style="text-align:right; margin-bottom: 16px;">
                     <span>
-                      <b style="font-size: 27px; color: red;">฿XXXXX</b>
+                      <b style="font-size: 27px; color: red;">฿ {{mTotalPrice}}</b>
                     </span>
                   </div>
                 </div>
@@ -82,14 +84,16 @@
         <ng-template #productList>
           <div class="col-md-8" style="max-height: 710px;overflow-y: scroll;">
             <div class="row">
-              <div (click)="onClickAddOrder()"
-                class="col-sm-4 col-md-3 newpadding_item">
+              <div (click)="onClickAddOrder(item)"
+                class="col-sm-4 col-md-3 newpadding_item"
+                *ngFor="let item of mProductArray">
                 <div class="card">
                   <div class="thumbnail">
-                    <img *ngIf="item.image === ''" src="assets/images/no_photo.jpg" class="portrait">
+                    <img *ngIf="item.image === null || item.image === ''" src="assets/images/no_photo.jpg">
+                    <img *ngIf="item.image !== null || item.image !== ''" src="{{item.image}}" >
                   </div>
-                  <span>
-                    ID XXX / ฿XXX / XXXX pcs.
+                  <span [ngClass]="isSelectedItem(item) === true? 'nprice_tag_selected' : 'nprice_tag'">
+                    ID {{item.productId}} / ฿ {{item.price}} / {{item.qty}} pcs.
                   </span>
                 </div>
               </div>
@@ -100,7 +104,7 @@
         <ng-template #payment>
           <div class="col-md-8" style="max-height: 710px;overflow-y: scroll; height:900px;">
             <div class="row" style="background-color: white; height: 100%; margin-right: 8px; margin-top: 13px;">
-              <app-shop-payment class="col-md-8 col-md-offset-2" style="margin-top: 50px;"></app-shop-payment>
+              <app-shop-payment [totalPayment]="mTotalPrice" (submitPayment)="submitPayment()" class="col-md-8 col-md-offset-2" style="margin-top: 50px;"></app-shop-payment>
             </div>
           </div>
         </ng-template>

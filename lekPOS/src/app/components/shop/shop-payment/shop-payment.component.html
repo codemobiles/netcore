@@ -1,1 +1,40 @@
-<p>shop-payment works!</p>
+<div class="row">
+    <section style="background-color:rgb(255, 254, 254);">
+      <form>
+        <div class="form-group" style="margin-top: 8px;">
+          <label>Change</label>
+          <input value="฿ {{mChange | number : '1.2-2'}}" class="form-control input_payment" disabled>
+        </div>
+
+        <div class="form-group" style="margin-top: 8px;">
+          <label>Paid</label>
+          <span class="currencyinput form-control input_payment">฿
+            <input type="text" (ngModelChange)="givenNumber=$event" [ngModel]="givenNumber"
+              name="given">
+            <!-- should not use pipe with two-way binding [(ngModel)]="givenNumber | custom : '1.2-2' -->
+          </span>
+        </div>
+
+        <div class="row">
+          <div class="button-payment">
+            <div class="note_button" (click)="onClickGiven(1000)">฿1,000</div>
+            <div class="note_button" (click)="onClickGiven(500)">฿500</div>
+            <div class="note_button" (click)="onClickGiven(100)">฿100</div>
+          </div>
+
+          <div class="button-payment">
+            <div class="note_button" (click)="onClickGiven(50)">฿50</div>
+            <div class="note_button" (click)="onClickGiven(20)">฿20</div>
+            <div class="note_button" (click)="onClickGiven(10)">฿10</div>
+          </div>
+
+          <div class="button-payment">
+            <div class="col-sm-4 payment_button payment_button_CLR" (click)="onClickReset()">CLR</div>
+            <div class="col-sm-4 payment_button payment_button_EXACT" (click)="onClickExact()">EXACT</div>
+            <div *ngIf="isPaidEnough" (click)="onClickSubmit()" class="col-sm-4 payment_button payment_button_submit">
+              SUBMIT</div>
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>

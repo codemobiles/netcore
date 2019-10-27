@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-shop-payment',
@@ -7,9 +7,45 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShopPaymentComponent implements OnInit {
 
+  @Input() totalPayment: number
+  @Output() submitPayment = new EventEmitter<void>();
+  givenNumber = '0.00';
+
   constructor() { }
 
   ngOnInit() {
+  }
+
+  public get mChange(): number {
+    const cash = Number(this.givenNumber.replace(/,/g, ''));
+    const result = cash - this.totalPayment;
+    if (result >= 0) {
+      return result;
+    } else {
+      return 0;
+    }
+  }
+
+  public get isPaidEnough() {
+    if (Number(this.givenNumber) >= this.totalPayment) {
+      return true;
+    }
+    return false;
+  }
+
+  onClickExact() {
+    this.givenNumber = String(this.totalPayment)
+  }
+
+  onClickGiven(addGiven: number) {
+
+  }
+
+  onClickReset() {
+  }
+
+  onClickSubmit() {
+    this.submitPayment.emit();
   }
 
 }
