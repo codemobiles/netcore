@@ -81,7 +81,6 @@ export class ShopHomeComponent implements OnInit {
     this.mOrderArray = new Array<Product>();
     this.feedData();
     this.mIsPaymentShow = false;
-
   }
 
 

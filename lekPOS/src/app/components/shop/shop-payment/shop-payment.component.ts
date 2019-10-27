@@ -38,10 +38,11 @@ export class ShopPaymentComponent implements OnInit {
   }
 
   onClickGiven(addGiven: number) {
-
+    this.givenNumber = String(Number(this.givenNumber) + addGiven)
   }
 
   onClickReset() {
+    this.givenNumber = "0"
   }
 
   onClickSubmit() {

@@ -12,10 +12,11 @@ export class StockCreateComponent implements OnInit {
 
   mProduct: Product = new Product();
   imageSrc: ArrayBuffer | string = null;
+  mIsSubmitted = false;
 
   constructor(private location: Location,
     private networkService: NetworkServiceService) {
-      
+
     }
 
   ngOnInit() {
@@ -24,6 +25,7 @@ export class StockCreateComponent implements OnInit {
   onSubmit(){
     this.networkService.addProduct(this.mProduct).subscribe(
       result => {
+          this.mIsSubmitted = true;
           this.location.back()
       }
     );

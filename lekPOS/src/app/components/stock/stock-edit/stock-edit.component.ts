@@ -14,6 +14,8 @@ export class StockEditComponent implements OnInit {
   mProduct: Product;
   imageSrc: ArrayBuffer | string = null;
 
+  mIsSubmitted = false;
+
   imageUrl: String
 
   constructor(
@@ -47,6 +49,7 @@ export class StockEditComponent implements OnInit {
     this.networkService.editProduct(
       this.mProduct, this.mProduct.productId).subscribe(
       result => {
+          this.mIsSubmitted = true;
           this.location.back()
       }
     );

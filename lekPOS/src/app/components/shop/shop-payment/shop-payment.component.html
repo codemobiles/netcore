@@ -9,7 +9,7 @@
         <div class="form-group" style="margin-top: 8px;">
           <label>Paid</label>
           <span class="currencyinput form-control input_payment">฿
-            <input type="text" (ngModelChange)="givenNumber=$event" [ngModel]="givenNumber"
+            <input type="text" (ngModelChange)="givenNumber=$event" [ngModel]="givenNumber | custom"
               name="given">
             <!-- should not use pipe with two-way binding [(ngModel)]="givenNumber | custom : '1.2-2' -->
           </span>

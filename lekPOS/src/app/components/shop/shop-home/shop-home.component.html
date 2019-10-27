@@ -24,7 +24,7 @@
                         </div>
                         <div class="title_product_list_item">{{item.name}}</div>
                         <div class="price_product_list_item">
-                          ฿ {{item.price}}
+                          ฿ {{item.price | number : '1.2-2'}}
                         </div>
 
                         <span style="cursor:pointer; float:right;" (click)="onClickRemoveOrder(item)">
@@ -55,7 +55,7 @@
                   </div>
                   <div class="col-md-10" style="text-align:right; margin-bottom: 16px;">
                     <span>
-                      <b style="font-size: 27px; color: red;">฿ {{mTotalPrice}}</b>
+                      <b style="font-size: 27px; color: red;">฿ {{mTotalPrice | number:'1.2-2' }}</b>
                     </span>
                   </div>
                 </div>
@@ -93,7 +93,7 @@
                     <img *ngIf="item.image !== null || item.image !== ''" src="{{item.image}}" >
                   </div>
                   <span [ngClass]="isSelectedItem(item) === true? 'nprice_tag_selected' : 'nprice_tag'">
-                    ID {{item.productId}} / ฿ {{item.price}} / {{item.qty}} pcs.
+                    ID {{item.productId}} / ฿ {{item.price | number : '1.2-2' }} / {{item.qty | number}} pcs.
                   </span>
                 </div>
               </div>

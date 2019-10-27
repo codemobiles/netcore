@@ -16,6 +16,7 @@ import { StockEditComponent } from './components/stock/stock-edit/stock-edit.com
 import { JwtInterceptor } from './services/jwt.interceptor';
 import { ShopHomeComponent } from './components/shop/shop-home/shop-home.component';
 import { ShopPaymentComponent } from './components/shop/shop-payment/shop-payment.component';
+import { CustomPipe } from './pipes/custom.pipe';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { ShopPaymentComponent } from './components/shop/shop-payment/shop-paymen
     StockCreateComponent,
     StockEditComponent,
     ShopHomeComponent,
-    ShopPaymentComponent
+    ShopPaymentComponent,
+    CustomPipe
   ],
   imports: [
     BrowserModule,
